@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128205017) do
+ActiveRecord::Schema.define(version: 20170130201919) do
+
+  create_table "campaigns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "subtitle"
+    t.text     "description",      limit: 65535
+    t.date     "goal_date"
+    t.integer  "repayment_length"
+    t.integer  "interest_percent"
+    t.integer  "goal_amount"
+    t.integer  "pledged_amount"
+    t.string   "picture"
+    t.integer  "creator_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["creator_id"], name: "index_campaigns_on_creator_id", using: :btree
+  end
 
   create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535

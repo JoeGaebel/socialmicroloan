@@ -7,6 +7,7 @@ describe User do
     end
 
     it { should have_many(:microposts).dependent(:destroy) }
+    it { should have_many(:campaigns).class_name('Campaign').dependent(:destroy) }
 
     describe 'name' do
       it 'should be valid' do

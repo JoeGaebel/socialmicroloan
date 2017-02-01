@@ -348,6 +348,8 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0)
     shellany (0.0.1)
+    shoulda-callback-matchers (1.1.4)
+      activesupport (>= 3)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     slop (3.6.0)
@@ -418,6 +420,7 @@ DEPENDENCIES
   rspec-rails (~> 3.5)
   sass-rails (= 5.0.6)
   selenium-webdriver
+  shoulda-callback-matchers (~> 1.1.1)
   shoulda-matchers (~> 3.1)
   spring
   spring-watcher-listen (~> 2.0.0)

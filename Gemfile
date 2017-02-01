@@ -36,6 +36,7 @@ group :test do
   gem 'rails-controller-testing', '0.1.1'
   gem 'guard',                    '2.13.0'
   gem 'shoulda-matchers',         '~> 3.1'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
 end
 
 group :development do
