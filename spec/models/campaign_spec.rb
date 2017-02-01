@@ -19,13 +19,13 @@ describe Campaign do
     it { should validate_presence_of(:goal_date) }
     it { should validate_presence_of(:repayment_length) }
     it { should validate_presence_of(:goal_amount) }
-    it { should validate_presence_of(:picture) }
-
+    it { should validate_presence_of(:interest_percent) }
     it { should validate_length_of(:title).is_at_most(100) }
     it { should validate_length_of(:subtitle).is_at_most(250) }
     it { should validate_inclusion_of(:repayment_length).in_array([2, 3, 6, 12]) }
+    it { should validate_inclusion_of(:interest_percent).in_range(Campaign::VALID_INTEREST_RANGE) }
     it { should validate_numericality_of(:goal_amount).is_less_than_or_equal_to(Campaign::MAX_LOAN_AMOUNT) }
-
+    
     describe '#goal_date_in_future' do
       let(:min_days) { Campaign::MINIMUM_DAYS_AHEAD }
 

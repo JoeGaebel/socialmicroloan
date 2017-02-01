@@ -16,6 +16,6 @@ FactoryGirl.define do
     goal_amount { 4000 }
     pledged_amount { 0 }
 
-    picture { 'spec/fixtures/boat.jpg' }
+    picture { File.open("#{Rails.root}/spec/fixtures/boat.jpg") }
   end
 end
