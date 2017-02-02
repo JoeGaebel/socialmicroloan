@@ -1,0 +1,37 @@
+#loaded_picture {
+  border-color: black;
+  border: 1px;
+  width: 26em;
+  height: 18em;
+  position: relative;
+  cursor: pointer;
+}
+
+.load-icon.glyphicon {
+  position: absolute;
+  top: 0.5%;
+  left: 93%;
+}
+
+#campaign_picture {
+  display: none;
+}
+
+#campaign_subtitle {
+  height: 11em;
+}
+
+.radio-option {
+  display: block;
+  input {
+    width: 2rem;
+  }
+}
+
+#campaign_description {
+  height: 20em;
+}
+
+#campaign_goal_amount, #campaign_interest_percent {
+  text-align: right;
+}

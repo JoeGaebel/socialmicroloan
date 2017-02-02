@@ -1,0 +1,67 @@
+<h1>Create a new Campaign</h1>
+<%= form_for(:campaign, url: campaigns_path, html: { multipart: true }) do |f| %>
+<div class="row">
+  <div class="col-md-4">
+    <span>
+      <img id="loaded_picture"/>
+      <i class="load-icon glyphicon glyphicon-picture"></i>
+    </span>
+
+  </div>
+  <div class="col-md-8">
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+
+    <%= f.label :subtitle %>
+    <%= f.text_area :subtitle, class: 'form-control' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <%= f.label :goal_amount %>
+    <div class="input-group">
+      <span class="input-group-addon">$</span>
+      <%= f.number_field :goal_amount, class: 'form-control' %>
+    </div>
+
+    <%= f.label :interest_percent %>
+    <div class="input-group">
+      <span class="input-group-addon">%</span>
+      <%= f.number_field :interest_percent, class: 'form-control', min: Campaign::VALID_INTEREST_RANGE.first, max: Campaign::VALID_INTEREST_RANGE.last %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <%= f.label :goal_date %>
+    <%= f.text_field :goal_date, class: 'form-control' %>
+    <div class="radio-buttons">
+      <%= f.label :repayment_length %>
+      <% Campaign::VALID_REPAYMENT_LENGTHS.each do |option| %>
+        <span class="radio-option">
+          <%= f.radio_button :repayment_length, option %>
+          <%= f.label :repayment_length, "#{option} months", :value => option %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    Total amount
+  </div>
+  <div class="col-md-6">
+    Monthly payment
+  </div>
+</div>
+
+<%= f.submit 'Create', class: 'btn btn-primary' %>
+<% end %>
+
