@@ -32,6 +32,10 @@ class Campaign < ApplicationRecord
   validate :goal_date_in_future, on: :create
   validate :picture_size
 
+  def amount_left
+    goal_amount - (pledged_amount || 0)
+  end
+
   private
 
   def goal_date_in_future

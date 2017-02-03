@@ -1,0 +1,36 @@
+<div id="show_title-header">
+  <h1 id="show_title"><%= @campaign.title %></h1>
+  <div id="show_subject">
+    <h2 id="show_subtitle"><%= @campaign.subtitle %></h2>
+    <h2 id="show_name">By <%= @campaign.creator.name %></h2>
+  </div>
+</div>
+
+
+<div class="info-row row">
+  <div class="col-md-5 col-md-offset-2">
+    <%= image_tag @campaign.picture.url %>
+  </div>
+
+  <div class="col-md-5 beside-photo">
+    <h3>12 Supporters</h3>
+    <h3>$<%= @campaign.pledged_amount || 0 %> raised</h3>
+    <h3>of</h3>
+    <h3>$<%= @campaign.goal_amount %> Goal</h3>
+    <h3>$<%= @campaign.amount_left %> to go!</h3>
+    <button type="button" class="btn btn-success lend">LEND</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Description</h3>
+      </div>
+      <div class="panel-body">
+        <%= @campaign.description %>
+      </div>
+    </div>
+  </div>
+</div>
