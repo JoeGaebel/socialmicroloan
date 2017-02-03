@@ -74,4 +74,36 @@ describe Campaign do
       end
     end
   end
+
+  describe '#maybe_convert_date' do
+    context 'when goal_date is a Date' do
+      it 'keeps the date as is' do
+        expect{ @campaign.save }.not_to change { @campaign.goal_date }
+      end
+    end
+
+    context 'when goal_date is a String' do
+      context 'in the correct form' do
+        let(:goal_date) { '2017-12-03' }
+
+        it 'parses and sets the value' do
+          @campaign.goal_date = goal_date
+          @campaign.save
+
+          converted_date = Date.strptime(goal_date, described_class::DATE_FORMAT)
+          expect(@campaign.goal_date).to eq(converted_date)
+        end
+      end
+
+      context 'in the wrong form' do
+        let(:goal_date) { '2017-12-03' }
+
+        it 'sets the value as nil' do
+          @campaign.goal_date = 'goal_date'
+          @campaign.save
+          expect(@campaign.goal_date).to be_nil
+        end
+      end
+    end
+  end
 end

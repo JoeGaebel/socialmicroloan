@@ -26,7 +26,12 @@ chooseFile = ->
 
 onReady = ->
   $('#loaded_picture').bind 'click', chooseFile
-  $('#campaign_goal_date').datepicker()
+
+  loadedDate = $('#campaign_goal_date').val();
+  $('#campaign_goal_date').datepicker({
+    dateFormat: "yy-mm-dd"
+  })
+
   $('#campaign_picture')
     .change(checkFileSize)
     .change(showPicture)

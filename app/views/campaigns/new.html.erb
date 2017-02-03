@@ -1,5 +1,6 @@
 <h1>Create a new Campaign</h1>
-<%= form_for(:campaign, url: campaigns_path, html: { multipart: true }) do |f| %>
+<%= form_for(@campaign, html: { multipart: true }) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
 <div class="row">
   <div class="col-md-4">
     <span>
@@ -44,11 +45,11 @@
     <%= f.text_field :goal_date, class: 'form-control' %>
     <div class="radio-buttons">
       <%= f.label :repayment_length %>
-      <% Campaign::VALID_REPAYMENT_LENGTHS.each do |option| %>
-        <span class="radio-option">
-          <%= f.radio_button :repayment_length, option %>
-          <%= f.label :repayment_length, "#{option} months", :value => option %>
-        </span>
+      <% Campaign::VALID_REPAYMENT_LENGTHS.each_with_index do |option, index| %>
+        <div class="radio-option form-control">
+          <%= f.radio_button :repayment_length, option, checked: (index == 0)%>
+          <%= f.label :repayment_length, "#{option} months", value: option %>
+        </div>
       <% end %>
     </div>
   </div>
