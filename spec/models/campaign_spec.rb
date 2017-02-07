@@ -8,10 +8,25 @@ describe Campaign do
     expect(@campaign).to be_valid
   end
 
+  describe 'associations' do
+    it { should belong_to(:creator).class_name('User') }
+
+    it { should have_many(:campaign_supports) }
+    it { should have_many(:supporters).through(:campaign_supports).source(:user) }
+
+    context 'with supported campaigns' do
+      before do
+        @campaign = create(:campaign_with_supporters)
+      end
+
+      it 'has supporters' do
+        expect(@campaign.supporters).to be_present
+      end
+    end
+  end
+
   describe 'validations' do
     subject { @campaign }
-
-    it { should belong_to(:creator).class_name('User') }
     it { should validate_presence_of(:creator) }
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:subtitle) }
@@ -104,6 +119,18 @@ describe Campaign do
           expect(@campaign.goal_date).to be_nil
         end
       end
+    end
+  end
+
+  describe '#days_left' do
+    let(:number_of_days) { 4 }
+
+    before do
+      @campaign.update_attribute(:goal_date, number_of_days.days.from_now)
+    end
+
+    it 'returns a rounded number of days' do
+      expect(@campaign.days_left).to eq(number_of_days + 1)
     end
   end
 end

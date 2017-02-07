@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :campaign do
-    creator { User.first }
+  factory :campaign, aliases: [:supported_campaign] do
+    creator { create(:user) }
     title { 'Boat Life 2016' }
     subtitle { "Rent in SF is crazy. I'm gonna live in a boat." }
     description {
@@ -17,5 +17,17 @@ FactoryGirl.define do
     pledged_amount { 0 }
 
     picture { File.open("#{Rails.root}/spec/fixtures/boat.jpg") }
+
+    factory :campaign_with_supporters do
+      transient do
+        supporters_count 5
+      end
+
+      after(:create) do |campaign, evaluator|
+        evaluator.supporters_count.times do
+          campaign.supporters << create(:user)
+        end
+      end
+    end
   end
 end

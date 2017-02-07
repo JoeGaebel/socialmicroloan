@@ -9,6 +9,11 @@ class Campaign < ApplicationRecord
 
   belongs_to :creator, class_name: 'User'
 
+  has_many :campaign_supports
+  has_many :supporters,
+    through: :campaign_supports,
+    source: :user
+
   before_validation :maybe_convert_date
 
   validates :creator,     presence: true
@@ -34,6 +39,10 @@ class Campaign < ApplicationRecord
 
   def amount_left
     goal_amount - (pledged_amount || 0)
+  end
+
+  def days_left
+    (goal_date - Date.today).round
   end
 
   private

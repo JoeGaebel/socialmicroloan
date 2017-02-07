@@ -1,13 +1,28 @@
 require 'spec_helper'
 
 describe User do
+  describe 'associations' do
+    it { should have_many(:microposts).dependent(:destroy) }
+    it { should have_many(:campaigns).class_name('Campaign').dependent(:destroy) }
+
+    it { should have_many(:campaign_supports) }
+    it { should have_many(:supported_campaigns).through(:campaign_supports).source(:campaign) }
+
+    context 'with supported campaigns' do
+      before do
+        @user = create(:supporting_user)
+      end
+
+      it 'has campaigns' do
+        expect(@user.supported_campaigns).to be_present
+      end
+    end
+  end
+
   describe 'validations' do
     before do
       @user = build(:user)
     end
-
-    it { should have_many(:microposts).dependent(:destroy) }
-    it { should have_many(:campaigns).class_name('Campaign').dependent(:destroy) }
 
     describe 'name' do
       it 'should be valid' do

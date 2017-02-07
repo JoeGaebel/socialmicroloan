@@ -32,6 +32,11 @@ class User < ApplicationRecord
 
   has_many :campaigns, foreign_key: 'creator_id', dependent: :destroy
 
+  has_many :campaign_supports
+  has_many :supported_campaigns,
+    through: :campaign_supports,
+    source: :campaign
+
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ?
       BCrypt::Engine::MIN_COST :
