@@ -1,14 +1,29 @@
 USERS_COUNT = 15
 POSTS_COUNT = 5
 
-User.create!({
-  name:  'Joe',
-  email: 'joe@joegaebel.com',
+joe = User.create!({
+  name:  'Joe Gaebel',
+  email: 'joe@socialmicro.loan',
   password:              'password',
   password_confirmation: 'password',
   admin: true,
   activated: true,
   activated_at: Time.zone.now
+})
+
+
+Campaign.create!({
+  id: 1,
+  creator: joe,
+  title: 'Boat Life 2016',
+  subtitle: "Rent in SF is crazy. I'm gonna live in a boat.",
+  description: "Rent is $2k per month. Boats? Boats are cheap. I need money to buy a boat, and live on it. I've got a good job I'll pay the loan back in no time.",
+  goal_date: 2.weeks.from_now,
+  repayment_length: 3,
+  interest_percent: 15,
+  goal_amount: 4000,
+  pledged_amount: 0,
+  picture:  File.open("#{Rails.root}/spec/fixtures/boat.jpg")
 })
 
 USERS_COUNT.times do |n|

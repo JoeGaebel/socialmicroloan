@@ -14,10 +14,10 @@
 
   <div class="col-md-5 beside-photo">
     <h3>12 Supporters</h3>
-    <h3>$<%= @campaign.pledged_amount || 0 %> raised</h3>
-    <h3>of</h3>
+    <h3>$<%= @campaign.pledged_amount || 0 %> Raised</h3>
     <h3>$<%= @campaign.goal_amount %> Goal</h3>
-    <h3>$<%= @campaign.amount_left %> to go!</h3>
+    <h3>$<%= @campaign.amount_left %> To Go!</h3>
+    <h3><%= @campaign.days_left %> Days To Go </h3>
     <button type="button" class="btn btn-success lend">LEND</button>
   </div>
 </div>
