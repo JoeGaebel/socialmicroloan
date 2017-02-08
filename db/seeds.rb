@@ -14,8 +14,7 @@ joe = User.create!({
 puts "created Joe!"
 
 
-boat_life = Campaign.create!({
-  id: 1,
+boat_life = Campaign.create({
   creator: joe,
   title: 'Boat Life 2016',
   subtitle: "Rent in SF is crazy. I'm gonna live in a boat.",
