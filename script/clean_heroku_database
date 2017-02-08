@@ -1,0 +1,3 @@
+heroku pg:reset DATABASE --confirm socialmicroloan &&
+heroku run rails db:migrate &&
+heroku run rails db:seed
