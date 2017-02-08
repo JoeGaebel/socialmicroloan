@@ -126,11 +126,13 @@ describe Campaign do
     let(:number_of_days) { 4 }
 
     before do
-      @campaign.update_attribute(:goal_date, number_of_days.days.from_now)
+      @time = Date.parse('12/03/2016')
+      allow(Date).to receive(:today).and_return(@time)
+      @campaign.update_attribute(:goal_date, @time + number_of_days.days)
     end
 
     it 'returns a rounded number of days' do
-      expect(@campaign.days_left).to eq(number_of_days + 1)
+      expect(@campaign.days_left).to eq(number_of_days)
     end
   end
 end
