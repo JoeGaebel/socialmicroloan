@@ -11,8 +11,10 @@ joe = User.create!({
   activated_at: Time.zone.now
 })
 
+puts "created Joe!"
 
-Campaign.create!({
+
+boat_life = Campaign.create!({
   id: 1,
   creator: joe,
   title: 'Boat Life 2016',
@@ -26,6 +28,8 @@ Campaign.create!({
   picture:  File.open("#{Rails.root}/spec/fixtures/boat.jpg")
 })
 
+puts "created Boat Life!"
+
 USERS_COUNT.times do |n|
   User.create!({
     name: Faker::Name.name,
@@ -36,6 +40,8 @@ USERS_COUNT.times do |n|
     activated_at: Time.zone.now
   })
 end
+
+puts "created users"
 
 users = User.order(:created_at).take(USERS_COUNT/3)
 POSTS_COUNT.times do
@@ -51,3 +57,8 @@ following = users[2..USERS_COUNT]
 followers = users[3..USERS_COUNT]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+
+Users.all.each do |user|
+  user.support(boat_life)
+end
