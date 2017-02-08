@@ -4,6 +4,7 @@ class Campaign < ApplicationRecord
   VALID_REPAYMENT_LENGTHS = [2, 3, 6, 12]
   VALID_INTEREST_RANGE = 0..50
   DATE_FORMAT = '%Y-%m-%d'
+  default_scope -> { order(created_at: :desc) }
 
   mount_uploader :picture, PictureUploader
 

@@ -1,5 +1,6 @@
-<% if logged_in? %>
-  <%= render 'shared/logged_in_home' %>
-<% else %>
+<% if !logged_in? %>
   <%= render 'shared/non_logged_in_home' %>
 <% end %>
+
+<%= render 'shared/feed' %>
+

@@ -1,0 +1,26 @@
+<li id="campaign-<%= campaign.id %>">
+  <div class="left-pane">
+    <%= link_to image_tag(campaign.picture.url), campaign %>
+  </div>
+  <div class="right-pane">
+    <h4 class="title">
+      <%= campaign.title %>
+    </h4>
+
+    <div class="subtitle">
+      <%= campaign.subtitle %>
+    </div>
+
+    <span class="user">
+      <%= link_to campaign.creator.name, campaign.creator %>
+    </span>
+
+    <span class="timestamp">
+    Posted <%= time_ago_in_words(campaign.created_at) %> ago.
+      <% if current_user?(campaign.creator) %>
+      <%= link_to 'delete', campaign, method: :delete,
+          data: { confirm: 'You sure?' } %>
+    <% end %>
+  </span>
+  </div>
+</li>
