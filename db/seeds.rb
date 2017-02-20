@@ -40,7 +40,7 @@ USERS_COUNT.times do |n|
   })
 end
 
-puts "created users"
+puts "created Users"
 
 users = User.order(:created_at).take(USERS_COUNT/3)
 POSTS_COUNT.times do
@@ -58,6 +58,6 @@ following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
 
-Users.all.each do |user|
+User.all.each do |user|
   user.support(boat_life)
 end
