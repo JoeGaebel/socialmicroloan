@@ -1,4 +1,4 @@
-USERS_COUNT = 15
+USERS_COUNT = 5
 POSTS_COUNT = 5
 
 joe = User.create!({
@@ -57,7 +57,22 @@ followers = users[3..USERS_COUNT]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
+def create_campaign(user)
+  campaign = Campaign.create({
+    title: Faker::Hipster::words(4).to_sentence,
+    subtitle: Faker::Hipster.sentence,
+    creator: user,
+    description: Faker::Hipster.paragraph,
+    goal_date: 2.weeks.from_now,
+    repayment_length: 3,
+    interest_percent: 15,
+    goal_amount: rand(9999),
+    pledged_amount: 0,
+    picture: File.open("#{Rails.root}/spec/fixtures/boat.jpg")
+  })
+end
 
 User.all.each do |user|
   user.support(boat_life)
+  create_campaign(user)
 end

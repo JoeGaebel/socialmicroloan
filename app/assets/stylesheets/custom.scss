@@ -292,3 +292,53 @@ span.picture {
 .users.follow {
   padding: 0;
 }
+
+.campaigns {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+  }
+  img {
+    height: 100%;
+    cursor: pointer;
+  }
+  .left-pane {
+    float: left;
+    width: 40%;
+    height: 200px;
+  }
+  .right-pane {
+    height: 200px;
+  }
+}
+
+.navbar-inverse {
+  background-color: #c44e4e;
+  border-width: 0;
+  .navbar-nav > li > a {
+    color: white;
+  }
+  #logo {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+}
+
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

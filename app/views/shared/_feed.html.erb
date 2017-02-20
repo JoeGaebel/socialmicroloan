@@ -1,6 +1,6 @@
-<% if @feed_items.any? %>
-  <ol class="microposts">
-    <%= render @feed_items %>
+<div class="popular-campaigns row">
+<h1>Popular</h1>
+  <ol class="campaigns">
+    <%= render @popular_campaigns %>
   </ol>
-  <%= will_paginate @feed_items %>
-<% end %>
+</div>
