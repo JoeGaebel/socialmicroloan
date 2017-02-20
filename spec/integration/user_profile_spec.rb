@@ -1,12 +1,10 @@
 describe 'User Profile' do
   before do
+    Campaign.per_page = 1
     @user = create(:user)
 
-    35.times do |index|
-      @user.microposts.create!({
-        content: hipster_ipsum,
-        created_at: index.days.ago
-      })
+    4.times do
+      @user.campaigns << create(:campaign)
     end
   end
 
@@ -17,10 +15,10 @@ describe 'User Profile' do
       assert_select 'title', @user.name + ' | Social Microloan'
       assert_select 'h1', text: @user.name
       assert_select 'h1>img.gravatar'
-      assert_match @user.microposts.count.to_s, response.body
+      assert_match @user.campaigns.count.to_s, response.body
       assert_select 'div.pagination', 1
-      @user.microposts.paginate(page: 1).each do |micropost|
-        assert_select "li#micropost-#{micropost.id}"
+      @user.campaigns.paginate(page: 1).each do |campaign|
+        assert_select "li#campaign-#{campaign.id}"
       end
     end
   end
