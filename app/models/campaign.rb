@@ -49,7 +49,7 @@ class Campaign < ApplicationRecord
 
   def goal_date_in_future
     return unless goal_date.present?
-    if goal_date < Date.today + (MINIMUM_DAYS_AHEAD + 1).days
+    if goal_date.mjd - Date.today.mjd < MINIMUM_DAYS_AHEAD
       errors.add(:goal_date, 'needs to be at least 3 days away')
     end
   end
