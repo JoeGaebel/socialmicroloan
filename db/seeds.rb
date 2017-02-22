@@ -13,6 +13,16 @@ joe = User.create!({
 
 puts "created Joe!"
 
+eddie = User.create({
+  name: 'Eddie A.',
+  email: 'eddie@example.com',
+  password: 'password',
+  activated: true,
+  activated_at: time.zone.now
+})
+
+puts "created Eddie!"
+
 
 boat_life = Campaign.create({
   creator: joe,

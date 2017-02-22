@@ -6,6 +6,9 @@
         <%= @user.name %>
       </h1>
     </section>
+    <div>
+      <%= link_to 'Connect Stripe Account', '#', class: 'btn btn-lg btn-primary' %>
+    </div>
   </aside>
   <div class="col-md-8">
     <% if @user.campaigns.any? %>
