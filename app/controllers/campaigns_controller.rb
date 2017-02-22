@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :ensure_user_logged_in, only: [:new, :create]
+  before_action :correct_user,   only: :destroy
 
   def create
     @campaign = current_user.campaigns.build(campaign_params)
@@ -22,6 +23,12 @@ class CampaignsController < ApplicationController
     @page_title = @campaign.title
   end
 
+  def destroy
+    @campaign.destroy
+    flash[:success] = 'Campaign deleted'
+    redirect_to request.referrer || root_url
+  end
+
   private
 
   def campaign_params
@@ -35,5 +42,10 @@ class CampaignsController < ApplicationController
       :interest_percent,
       :goal_amount
     )
+  end
+
+  def correct_user
+    @campaign = current_user.campaigns.find_by(id: params[:id])
+    redirect_to root_url if @campaign.nil?
   end
 end
