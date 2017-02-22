@@ -49,11 +49,4 @@ class CampaignsController < ApplicationController
     @campaign = current_user.campaigns.find_by(id: params[:id])
     redirect_to root_url if @campaign.nil?
   end
-
-  def ensure_user_is_connected
-    unless current_user.connected?
-      flash[:danger] = 'Please connect via Stripe'
-      redirect_to user_path(current_user)
-    end
-  end
 end

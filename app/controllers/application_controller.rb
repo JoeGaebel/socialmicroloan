@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def ensure_user_is_connected
+    unless current_user.connected?
+      flash[:danger] = 'Please connect via Stripe'
+      redirect_to user_path(current_user)
+    end
+  end
 end
