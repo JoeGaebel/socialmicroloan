@@ -1,0 +1,70 @@
+<h1>Support "<%= @campaign.title %>"</h1>
+<%= form_for(:campaign_support, url: campaign_supports_path) do |f| %>
+
+<div class="info-row row campaign-show">
+  <div class="col-md-5 col-md-offset-1">
+    <%= image_tag @campaign.picture.url %>
+  </div>
+
+  <div class="col-md-5 beside-photo">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Campaign Info</h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          <%= @campaign.creator.name %> is seeking $<%= @campaign.amount_left %> more to achieve their goal
+        </p>
+
+        <div class="support-field">
+          <%= f.label :support_amount %>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <%= f.number_field :support_amount, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="support-field">
+          <%= f.label :require_interest %>
+          <%= f.check_box :require_interest, checked: true %>
+        </div>
+
+        <div class="with-interest support-field">
+          <div class="title">
+            Interest received based on <%= @campaign.interest_percent %>% from Campaign
+          </div>
+          <div>
+            $<span class="revenue-amount">0.00</span>
+          </div>
+        </div>
+
+        <div class="payback support-field">
+          <div class="title">
+            Payback
+          </div>
+          <div>
+            <%= @campaign.creator.name %> will pay you back
+            $<span class="payback-amount">0.00</span>
+            each month for <%= @campaign.repayment_length %> months.
+          </div>
+        </div>
+
+        <div><%= hidden_field_tag :campaign_id, @campaign.id %></div>
+        <div><%= hidden_field_tag :campaign_interest, @campaign.interest_percent %></div>
+        <div><%= hidden_field_tag :campaign_goal_amount, @campaign.goal_amount %></div>
+        <div><%= hidden_field_tag :campaign_repayment_length, @campaign.repayment_length %></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+      <%= f.submit 'LEND', class: 'btn btn-success' %>
+  </div>
+</div>
+<% end %>
+
+<script>
+  window.maxSupportAmount = <%= @campaign.amount_left %>;
+</script>

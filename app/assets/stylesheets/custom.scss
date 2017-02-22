@@ -326,6 +326,20 @@ span.picture {
   }
 }
 
+.campaign-show {
+  img {
+    float: right;
+  }
+
+  h3.first {
+    margin-top: 0px;
+  }
+
+  .panel-success {
+    margin-bottom: 0px;
+  }
+}
+
 .navbar-inverse {
   background-color: #c44e4e;
   border-width: 0;
