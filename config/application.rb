@@ -21,9 +21,7 @@ module SocialMicroloan
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '/connect/oauth', :headers => :any, :methods => [:get, :post]
         resource '/connect/confirm', :headers => :any, :methods => [:get, :post]
-        resource '/connect/deauthorize', :headers => :any, :methods => [:get, :post]
       end
     end
   end
