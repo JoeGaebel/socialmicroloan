@@ -342,3 +342,27 @@ span.picture {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+hidden {
+  display: none;
+}
+
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.with-interest, .payback {
+  .title {
+    font-weight: bold;
+  }
+}
+
+.support-field {
+  margin-top: 10px;
+}
