@@ -36,6 +36,4 @@ updateAmounts = ->
   $('.revenue-amount').text(revenue.toFixed(2))
   $('.payback-amount').text(monthlyRepayment.toFixed(2))
 
-
-$(document).ready(onReady)
-$(document).on('page:load', onReady)
+$(document).on('turbolinks:load', onReady)

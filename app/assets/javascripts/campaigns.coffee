@@ -37,6 +37,4 @@ onReady = ->
     .change(showPicture)
     .change(hideIcon)
 
-
-$(document).ready(onReady)
-$(document).on('page:load', onReady)
+$(document).on('turbolinks:load', onReady)
