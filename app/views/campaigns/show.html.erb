@@ -18,7 +18,21 @@
     <h3>$<%= @campaign.goal_amount %> Goal</h3>
     <h3>$<%= @campaign.amount_left %> To Go!</h3>
     <h3><%= @campaign.days_left %> Days To Go </h3>
-    <button type="button" class="btn btn-success lend">LEND</button>
+    <% if current_user.supported_campaigns.include?(@campaign) %>
+      <div class="panel panel-success">
+        <div class="panel-body">
+          You're supporting this campaign!
+        </div>
+      </div>
+    <% elsif current_user?(@campaign.creator) %>
+      <div class="panel panel-info">
+        <div class="panel-body">
+          You're the owner of this campaign
+        </div>
+      </div>
+    <% else %>
+      <%= link_to "LEND", new_campaign_support_path(campaign_id: @campaign.id), class: 'btn btn-success lend' %>
+    <% end %>
   </div>
 </div>
 
