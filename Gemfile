@@ -23,6 +23,7 @@ gem 'stripe'
 gem 'oauth2'
 gem 'highline', require: false # used for setup rake task
 gem 'rest-client', '~> 2.0'
+gem 'rack-cors'
 
 gem 'pg', group: :production
 

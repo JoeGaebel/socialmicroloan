@@ -17,5 +17,14 @@ module SocialMicroloan
     end
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
+
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '/connect/oauth', :headers => :any, :methods => [:get, :post]
+        resource '/connect/confirm', :headers => :any, :methods => [:get, :post]
+        resource '/connect/deauthorize', :headers => :any, :methods => [:get, :post]
+      end
+    end
   end
 end
