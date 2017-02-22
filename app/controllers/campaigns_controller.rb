@@ -1,6 +1,7 @@
 class CampaignsController < ApplicationController
   before_action :ensure_user_logged_in, only: [:new, :create]
   before_action :correct_user,   only: :destroy
+  before_action :ensure_user_is_connected, only: [:new, :create]
 
   def create
     @campaign = current_user.campaigns.build(campaign_params)
@@ -47,5 +48,12 @@ class CampaignsController < ApplicationController
   def correct_user
     @campaign = current_user.campaigns.find_by(id: params[:id])
     redirect_to root_url if @campaign.nil?
+  end
+
+  def ensure_user_is_connected
+    unless current_user.connected?
+      flash[:danger] = 'Please connect via Stripe'
+      redirect_to user_path(current_user)
+    end
   end
 end
