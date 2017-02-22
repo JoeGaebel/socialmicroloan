@@ -23,7 +23,6 @@ eddie = User.create({
 
 puts "created Eddie!"
 
-
 boat_life = Campaign.create({
   creator: joe,
   title: 'Boat Life 2016',
@@ -80,9 +79,4 @@ def create_campaign(user)
     pledged_amount: 0,
     picture: File.open("#{Rails.root}/spec/fixtures/boat.jpg")
   })
-end
-
-User.all.each do |user|
-  user.support(boat_life)
-  create_campaign(user)
 end
