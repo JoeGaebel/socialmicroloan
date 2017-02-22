@@ -12,8 +12,11 @@
           <span class="glyphicon glyphicon-ok"/>
           Connected with Stripe
         </p>
+        <% if current_user?(@user) %>
+          <%= link_to 'Deauthorize Stripe Account', stripe_deauthorize_path, class: 'btn btn-danger btn-lg' %>
+        <% end %>
       <% else %>
-      <%= link_to 'Connect Stripe Account', stripe_oauth_path, class: 'btn btn-lg btn-primary' %>
+        <%= link_to 'Connect Stripe Account', stripe_oauth_path, class: 'btn btn-lg btn-primary' %>
       <% end %>
     </div>
   </aside>
