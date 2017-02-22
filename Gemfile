@@ -21,6 +21,8 @@ gem 'fog', '1.38.0'
 gem 'jquery-ui-rails'
 gem 'stripe'
 gem 'oauth2'
+gem 'highline', require: false # used for setup rake task
+gem 'rest-client', '~> 2.0'
 
 gem 'pg', group: :production
 
