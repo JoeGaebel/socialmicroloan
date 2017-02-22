@@ -7,7 +7,14 @@
       </h1>
     </section>
     <div>
+      <% if @user.connected? %>
+        <p>
+          <span class="glyphicon glyphicon-ok"/>
+          Connected with Stripe
+        </p>
+      <% else %>
       <%= link_to 'Connect Stripe Account', '#', class: 'btn btn-lg btn-primary' %>
+      <% end %>
     </div>
   </aside>
   <div class="col-md-8">
