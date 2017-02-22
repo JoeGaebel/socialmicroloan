@@ -25,4 +25,16 @@ describe CampaignSupport do
     expect(@campaign.supporters.length).to eq(1)
     expect(@campaign.supporters).to include(@user)
   end
+
+  it 'should prevent creators from supporting their own campaigns' do
+    my_campaign = create(:campaign, creator: @user)
+    expect(@user.campaigns).to include(my_campaign)
+
+    self_support = build(:campaign_support, {
+      user_id: @user.id,
+      campaign_id: my_campaign.id
+    })
+
+    expect(self_support).not_to be_valid
+  end
 end
