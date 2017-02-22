@@ -1,5 +1,4 @@
 USERS_COUNT = 5
-POSTS_COUNT = 5
 
 joe = User.create!({
   name:  'Joe Gaebel',
@@ -8,7 +7,11 @@ joe = User.create!({
   password_confirmation: 'password',
   admin: true,
   activated: true,
-  activated_at: Time.zone.now
+  activated_at: Time.zone.now,
+  publishable_key: 'pk_test_Xu7tPv4iaR5HAhpW5aMBAUsw',
+  secret_key: 'sk_test_D3i9SYfZppcHll9nW1aRzLEW',
+  stripe_user_id: 'acct_19ptbjCn5n634585',
+  currency: 'cad'
 })
 
 puts "created Joe!"
@@ -50,33 +53,3 @@ USERS_COUNT.times do |n|
 end
 
 puts "created Users"
-
-users = User.order(:created_at).take(USERS_COUNT/3)
-POSTS_COUNT.times do
-  users.each do |user|
-    content = Faker::Hipster.sentence(4, false, 4)
-    user.microposts.create!(content: content)
-  end
-end
-
-users = User.all
-user  = users.first
-following = users[2..USERS_COUNT]
-followers = users[3..USERS_COUNT]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
-
-def create_campaign(user)
-  campaign = Campaign.create({
-    title: Faker::Hipster::words(4).to_sentence,
-    subtitle: Faker::Hipster.sentence,
-    creator: user,
-    description: Faker::Hipster.paragraph,
-    goal_date: 2.weeks.from_now,
-    repayment_length: 3,
-    interest_percent: 15,
-    goal_amount: rand(9999),
-    pledged_amount: 0,
-    picture: File.open("#{Rails.root}/spec/fixtures/boat.jpg")
-  })
-end
