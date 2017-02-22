@@ -18,7 +18,7 @@ eddie = User.create({
   email: 'eddie@example.com',
   password: 'password',
   activated: true,
-  activated_at: time.zone.now
+  activated_at: Time.zone.now
 })
 
 puts "created Eddie!"
