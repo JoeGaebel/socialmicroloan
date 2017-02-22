@@ -7,7 +7,7 @@ class StripeController < ApplicationController
     url, error = connector.oauth_url( redirect_uri: stripe_confirm_url )
 
     if url.nil?
-      flash[:error] = error
+      flash[:danger] = error
       redirect_to user_path( current_user )
     else
       redirect_to url
@@ -28,7 +28,7 @@ class StripeController < ApplicationController
       # If we have an 'error' parameter, it's because the
       # user denied the connection request. Other errors
       # are handled at #oauth_url generation time.
-      flash[:error] = "Authorization request denied."
+      flash[:danger] = "Authorization request denied."
     end
 
     redirect_to user_path( current_user )
