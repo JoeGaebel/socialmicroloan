@@ -3,7 +3,7 @@ class CampaignSupport < ApplicationRecord
   belongs_to :campaign
   belongs_to :user
 
-  validates :support_amount, presence: true, numericality: { greater_than_or_equal_to: MINIMUM_SUPPORT_AMOUNT }
+  validates :support_amount, numericality: { greater_than_or_equal_to: MINIMUM_SUPPORT_AMOUNT }
   validates :campaign_id, presence: true
   validates :user_id, presence: true
   validate :supporter_is_not_creator

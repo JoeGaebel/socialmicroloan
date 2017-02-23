@@ -1,6 +1,6 @@
 <h1>Support "<%= @campaign.title %>"</h1>
-<%= form_for(:campaign_support, url: campaign_supports_path) do |f| %>
-
+<%= form_for(@support) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
 <div class="info-row row campaign-show">
   <div class="col-md-5 col-md-offset-1">
     <%= image_tag @campaign.picture.url %>

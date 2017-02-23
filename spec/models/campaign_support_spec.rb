@@ -20,7 +20,6 @@ describe CampaignSupport do
 
   it { should validate_presence_of(:campaign_id) }
   it { should validate_presence_of(:user_id) }
-  it { should validate_presence_of(:support_amount) }
   it { should validate_numericality_of(:support_amount)
                 .is_greater_than_or_equal_to(CampaignSupport::MINIMUM_SUPPORT_AMOUNT) }
 

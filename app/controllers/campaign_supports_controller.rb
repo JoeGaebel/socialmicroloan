@@ -5,21 +5,34 @@ class CampaignSupportsController < ApplicationController
   before_action :ensure_user_is_connected
 
   def new
+    @page_title = 'Support'
+    @support = CampaignSupport.new
   end
 
   def create
-    current_user.support(@campaign)
-    respond_to do |format|
-      format.html { redirect_to @campaign }
-      format.js
+    @support = CampaignSupport.new(support_params.merge({
+      user_id: current_user.id,
+      campaign_id: @campaign.id
+    }))
+
+    if @support.save
+      flash[:success] = "Successfully supported the Campaign!"
+
+      redirect_to @campaign
+    else
+      render :new
     end
   end
+
+  private
 
   def set_campaign
     @campaign = Campaign.find(params[:campaign_id])
   end
 
-  private
+  def support_params
+    params.require(:campaign_support).permit(:support_amount, :require_interest)
+  end
 
   def ensure_not_already_supported
     if current_user.supported_campaigns.include?(@campaign)
