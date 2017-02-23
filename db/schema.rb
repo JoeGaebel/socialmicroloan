@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222032616) do
+ActiveRecord::Schema.define(version: 20170223022123) do
 
   create_table "campaign_supports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "campaign_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "support_amount"
+    t.boolean  "require_interest"
     t.index ["campaign_id", "user_id"], name: "index_campaign_supports_on_campaign_id_and_user_id", unique: true, using: :btree
     t.index ["campaign_id"], name: "index_campaign_supports_on_campaign_id", using: :btree
     t.index ["user_id"], name: "index_campaign_supports_on_user_id", using: :btree

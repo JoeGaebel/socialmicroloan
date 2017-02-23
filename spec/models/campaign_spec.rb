@@ -16,7 +16,8 @@ describe Campaign do
 
     context 'with supported campaigns' do
       before do
-        @campaign = create(:campaign_with_supporters)
+        @campaign = create(:campaign)
+        create(:campaign_support, { campaign_id: @campaign.id })
       end
 
       it 'has supporters' do
@@ -57,7 +58,7 @@ describe Campaign do
 
       context 'when the goal date is 1 day below the limit' do
         before do
-          @campaign = build(:campaign, goal_date: (min_days - 1).days.from_now)
+          @campaign = build(:campaign, goal_date: (min_days - 2).days.from_now)
         end
 
         it 'is not valid' do

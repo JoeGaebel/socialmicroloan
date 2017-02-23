@@ -5,6 +5,7 @@ describe CampaignsController do
 
   before do
     @user = create(:user)
+    allow_any_instance_of(User).to receive(:connected?) { true }
   end
 
   describe '#new' do

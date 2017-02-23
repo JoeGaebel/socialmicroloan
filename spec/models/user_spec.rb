@@ -10,7 +10,8 @@ describe User do
 
     context 'with supported campaigns' do
       before do
-        @user = create(:supporting_user)
+        @user = create(:user)
+        create(:campaign_support, { user: @user })
       end
 
       it 'has campaigns' do

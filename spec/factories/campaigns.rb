@@ -17,17 +17,5 @@ FactoryGirl.define do
     pledged_amount { 0 }
 
     picture { File.open("#{Rails.root}/spec/fixtures/boat.jpg") }
-
-    factory :campaign_with_supporters do
-      transient do
-        supporters_count 5
-      end
-
-      after(:create) do |campaign, evaluator|
-        evaluator.supporters_count.times do
-          campaign.supporters << create(:user)
-        end
-      end
-    end
   end
 end
