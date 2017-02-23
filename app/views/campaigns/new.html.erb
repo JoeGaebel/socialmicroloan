@@ -66,3 +66,8 @@
 <%= f.submit 'Create', class: 'btn btn-primary' %>
 <% end %>
 
+<script>
+  window.maxLoanAmount = <%= Campaign::MAX_LOAN_AMOUNT %>;
+  window.maxInterest = <%= Campaign::VALID_INTEREST_RANGE.last %>;
+</script>
+

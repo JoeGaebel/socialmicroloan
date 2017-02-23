@@ -9,13 +9,10 @@ toggleInterestReceived = (e) ->
 
 
 onSupportAmountKey = (e) ->
-  if(!((e.keyCode > 95 && e.keyCode < 106) || (e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 8))
+  if !utils.restrictNegatives(e)
     return false
 
-  supportAmount = $(e.target)
-  if supportAmount.val() > window.maxSupportAmount
-    supportAmount.val(window.maxSupportAmount)
-
+  utils.restrictAmountTo(e, window.maxSupportAmount)
   updateAmounts()
 
 updateAmounts = ->
