@@ -17,7 +17,6 @@ class CampaignSupportsController < ApplicationController
 
     if @support.save
       flash[:success] = "Successfully supported the Campaign!"
-
       redirect_to @campaign
     else
       render :new

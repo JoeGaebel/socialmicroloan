@@ -14,7 +14,6 @@ FactoryGirl.define do
     interest_percent { 15 }
 
     goal_amount { 4000 }
-    pledged_amount { 0 }
 
     picture { File.open("#{Rails.root}/spec/fixtures/boat.jpg") }
   end

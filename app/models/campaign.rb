@@ -39,11 +39,15 @@ class Campaign < ApplicationRecord
   validate :picture_size
 
   def amount_left
-    goal_amount - (pledged_amount || 0)
+    goal_amount - (pledged_amount)
   end
 
   def days_left
     (goal_date - Date.today).round
+  end
+
+  def pledged_amount
+    supporters.sum(:support_amount)
   end
 
   private

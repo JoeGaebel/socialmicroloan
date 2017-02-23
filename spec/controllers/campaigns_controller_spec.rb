@@ -86,7 +86,7 @@ describe CampaignsController do
             Campaign.count
           }.by(1)
 
-          expect(assigns[:campaign].pledged_amount).to be_nil
+          expect(assigns[:campaign].pledged_amount).to eq(0)
           expect(assigns[:campaign].creator_id).to eq(@user.id)
         end
       end

@@ -136,4 +136,18 @@ describe Campaign do
       expect(@campaign.days_left).to eq(number_of_days)
     end
   end
+
+  describe '#pledged_amount' do
+    let(:support_amount1) { 100 }
+    let(:support_amount2) { 200 }
+
+    it 'sums the amount of supporter amounts' do
+      expect(@campaign.pledged_amount).to eq(0)
+
+      create(:campaign_support, { campaign: @campaign, support_amount: support_amount1 })
+      create(:campaign_support, { campaign: @campaign, support_amount: support_amount2 })
+
+      expect(@campaign.pledged_amount).to eq(support_amount1 + support_amount2)
+    end
+  end
 end

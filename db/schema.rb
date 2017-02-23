@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223022123) do
+ActiveRecord::Schema.define(version: 20170223045753) do
 
   create_table "campaign_supports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "campaign_id"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20170223022123) do
     t.integer  "repayment_length"
     t.integer  "interest_percent"
     t.integer  "goal_amount"
-    t.integer  "pledged_amount"
     t.string   "picture"
     t.integer  "creator_id"
     t.datetime "created_at",                     null: false
