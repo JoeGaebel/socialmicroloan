@@ -3,6 +3,7 @@ class CampaignSupportsController < ApplicationController
   before_action :ensure_user_logged_in
   before_action :ensure_not_already_supported
   before_action :ensure_user_is_connected
+  before_action :ensure_user_not_creator
 
   def new
     @page_title = 'Support'
@@ -38,5 +39,9 @@ class CampaignSupportsController < ApplicationController
       flash[:danger] = "You've already supported this campaign!"
       redirect_to @campaign
     end
+  end
+
+  def ensure_user_not_creator
+    redirect_to campaign_path(@campaign.id) if current_user?(@campaign.creator)
   end
 end
