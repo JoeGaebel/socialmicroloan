@@ -35,7 +35,6 @@ boat_life = Campaign.create({
   repayment_length: 3,
   interest_percent: 5,
   goal_amount: 3000,
-  pledged_amount: 0,
   picture:  File.open("#{Rails.root}/spec/fixtures/boat.jpg")
 })
 
