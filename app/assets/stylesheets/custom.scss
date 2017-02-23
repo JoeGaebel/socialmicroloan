@@ -371,10 +371,14 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.with-interest, .payback {
+.with-interest, .payback, .bold-me {
   .title {
     font-weight: bold;
   }
+}
+
+.bold-me {
+  font-weight: bold;
 }
 
 .support-field {

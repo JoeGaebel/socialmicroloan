@@ -29,19 +29,43 @@ checkFileSize = ->
     alert 'Maximum file size is 5MB. Please choose a smaller file.'
 
 hideIcon = ->
-  $('.load-icon').hide();
+  $('.load-icon').hide()
 
 chooseFile = ->
-  $('#campaign_picture').click();
+  $('#campaign_picture').click()
 
+updateDisplayAmounts = ->
+  totalAmount = $('.total-amount')
+  montlyPayment = $('.monthly-payment')
+
+  goalAmount = $('#campaign_goal_amount').val()
+  interestPercent = $('#campaign_interest_percent').val()
+  repaymentLength = $("input:radio[name='campaign[repayment_length]']:checked").val()
+
+  goalAmount = parseInt(goalAmount)
+  interestPercent = parseInt(interestPercent)
+  repaymentLength = parseInt(repaymentLength)
+
+
+  if goalAmount and interestPercent
+    interestAmount = interestPercent / 100
+    totalAmountValue = goalAmount * (1 + interestAmount)
+    monthlyPaymentValue = totalAmountValue / repaymentLength
+
+    totalAmount.text(totalAmountValue.toFixed(2))
+    montlyPayment.text(monthlyPaymentValue.toFixed(2))
 
 onReady = ->
   $('#campaign_goal_amount').on('keydown keyup', onGoalAmountKey)
   $('#campaign_interest_percent').on('keydown keyup', onPercentKey)
 
+  $('#campaign_goal_amount').on('keydown keyup', updateDisplayAmounts)
+  $('#campaign_interest_percent').on('keydown keyup', updateDisplayAmounts)
+  $('.repayment-length').on('change', updateDisplayAmounts)
+
   $('#loaded_picture').bind 'click', chooseFile
 
-  loadedDate = $('#campaign_goal_date').val();
+  loadedDate = $('#campaign_goal_date').val()
   $('#campaign_goal_date').datepicker({
     dateFormat: "yy-mm-dd"
   })

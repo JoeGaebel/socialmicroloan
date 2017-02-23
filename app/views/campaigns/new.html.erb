@@ -19,12 +19,14 @@
     <%= f.text_area :subtitle, class: 'form-control' %>
   </div>
 </div>
+
 <div class="row">
   <div class="col-md-12">
     <%= f.label :description %>
     <%= f.text_area :description, class: 'form-control' %>
   </div>
 </div>
+
 <div class="row">
   <div class="col-md-6">
     <%= f.label :goal_amount %>
@@ -47,23 +49,35 @@
       <%= f.label :repayment_length %>
       <% Campaign::VALID_REPAYMENT_LENGTHS.each_with_index do |option, index| %>
         <div class="radio-option form-control">
-          <%= f.radio_button :repayment_length, option, checked: (index == 0)%>
+          <%= f.radio_button :repayment_length, option, checked: (index == 0), class: 'repayment-length'%>
           <%= f.label :repayment_length, "#{option} months", value: option %>
         </div>
       <% end %>
     </div>
   </div>
-</div>
-<div class="row">
+
   <div class="col-md-6">
-    Total amount
+    <div class="panel panel-default">
+      <div class="panel-body bold-me">
+        Total amount: $<span class="total-amount">0.00</span>
+      </div>
+    </div>
   </div>
+
   <div class="col-md-6">
-    Monthly payment
+    <div class="panel panel-default">
+      <div class="panel-body bold-me">
+        Monthly payment: $<span class="monthly-payment">0.00</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<%= f.submit 'Create', class: 'btn btn-primary' %>
+<div class="row">
+  <div class="col-md-6 col-lg-offset-3">
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+  </div>
+</div>
 <% end %>
 
 <script>
