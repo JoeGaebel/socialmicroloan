@@ -1,7 +1,7 @@
 <div id="show_title-header">
-  <h1 id="show_title"><%= @campaign.title %></h1>
+  <h1 id="show_title"><%= emojify(@campaign.title) %></h1>
   <div id="show_subject">
-    <h2 id="show_subtitle"><%= @campaign.subtitle %></h2>
+    <h2 id="show_subtitle"><%= emojify(@campaign.subtitle) %></h2>
     <h2 id="show_name">By <%= @campaign.creator.name %></h2>
   </div>
 </div>
@@ -51,14 +51,14 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row campaign-description">
   <div class="col-md-10 col-md-offset-1">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Description</h3>
       </div>
       <div class="panel-body">
-        <%= @campaign.description %>
+        <%= markdown(@campaign.description) %>
       </div>
     </div>
   </div>

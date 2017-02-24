@@ -388,3 +388,20 @@ input[type="number"] {
 .panel-info {
   margin-bottom: 0 !important;
 }
+
+.campaign-description {
+  img:not(.emoji) {
+    width: 100%;
+  }
+}
+
+#show_title {
+  .emoji {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.emoji {
+  margin-top: -6px;
+}

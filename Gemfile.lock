@@ -226,6 +226,7 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
+    gemoji (3.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     guard (2.13.0)
@@ -266,6 +267,9 @@ GEM
     lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    md_emoji (1.0.2)
+      railties (>= 3.1.0)
+      redcarpet (>= 2.0)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -341,6 +345,7 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
+    redcarpet (3.4.0)
     rest-client (2.0.1)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -437,6 +442,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   fog (= 1.38.0)
+  gemoji
   guard (= 2.13.0)
   highline
   jbuilder (= 2.4.1)
@@ -444,6 +450,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   listen (~> 3.0.5)
+  md_emoji
   mini_magick (= 4.5.1)
   mysql2
   oauth2
@@ -454,6 +461,7 @@ DEPENDENCIES
   rack-cors
   rails (= 5.0.0.1)
   rails-controller-testing (= 0.1.1)
+  redcarpet (~> 3.3, >= 3.3.4)
   rest-client (~> 2.0)
   rspec-rails (~> 3.5)
   sass-rails (= 5.0.6)

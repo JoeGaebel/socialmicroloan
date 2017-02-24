@@ -25,6 +25,9 @@ gem 'highline', require: false # used for setup rake task
 gem 'rest-client', '~> 2.0'
 gem 'rack-cors'
 gem 'jquery-turbolinks'
+gem 'redcarpet', '~> 3.3', '>= 3.3.4'
+gem 'gemoji'
+gem 'md_emoji'
 
 gem 'pg', group: :production
 
