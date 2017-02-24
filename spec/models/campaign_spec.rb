@@ -137,6 +137,26 @@ describe Campaign do
     end
   end
 
+  describe '#is_funded?' do
+    subject { @campaign.is_funded? }
+
+    context 'when the goal amount is equal to the pledged amount' do
+      before do
+        create(:campaign_support, campaign: @campaign, support_amount: @campaign.goal_amount)
+      end
+
+      it { should be_truthy }
+    end
+
+    context 'when the goal amount is less than the pledged amount' do
+      before do
+        expect(@campaign.pledged_amount).to be < @campaign.goal_amount
+      end
+
+      it { should be_falsey }
+    end
+  end
+
   describe '#pledged_amount' do
     let(:support_amount1) { 100 }
     let(:support_amount2) { 200 }

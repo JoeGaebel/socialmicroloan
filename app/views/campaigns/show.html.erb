@@ -23,6 +23,14 @@
         <h3>$<%= @campaign.goal_amount %> Goal</h3>
         <h3>$<%= @campaign.amount_left %> To Go!</h3>
         <h3><%= @campaign.days_left %> Days Left To Raise Funds </h3>
+
+        <% if @campaign.is_funded? %>
+          <div class="panel panel-success">
+            <div class="panel-body">
+              This Campaign was successfully funded!
+            </div>
+          </div>
+        <% end %>
         <% if current_user && current_user.supported_campaigns.include?(@campaign) %>
           <div class="panel panel-success">
             <div class="panel-body">
@@ -35,7 +43,7 @@
               You're the owner of this campaign
             </div>
           </div>
-        <% else %>
+        <% elsif !@campaign.is_funded? %>
           <%= link_to "LEND", new_campaign_support_path(campaign_id: @campaign.id), class: 'btn btn-success lend' %>
         <% end %>
       </div>

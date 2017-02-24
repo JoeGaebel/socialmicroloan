@@ -50,6 +50,10 @@ class Campaign < ApplicationRecord
     supporters.sum(:support_amount)
   end
 
+  def is_funded?
+    goal_amount == pledged_amount
+  end
+
   private
 
   def goal_date_in_future
