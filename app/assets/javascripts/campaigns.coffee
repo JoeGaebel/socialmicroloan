@@ -56,6 +56,28 @@ updateDisplayAmounts = ->
     montlyPayment.text(monthlyPaymentValue.toFixed(2))
 
 onReady = ->
+  new SimpleMDE
+    element: document.getElementById("campaign_description")
+    hideIcons: ["fullscreen", "side-by-side"]
+    toolbar: [
+      'bold',
+      'italic',
+      'heading',
+      '|',
+      'quote',
+      'unordered-list',
+      'ordered-list',
+      '|',
+      'link',
+      'image',
+      'table',
+      '|',
+      'horizontal-rule',
+      'guide',
+      '|',
+      'preview'
+    ]
+
   $('#campaign_goal_amount').on('keydown keyup', onGoalAmountKey)
   $('#campaign_interest_percent').on('keydown keyup', onPercentKey)
 

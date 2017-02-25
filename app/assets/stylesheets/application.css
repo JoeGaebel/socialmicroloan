@@ -12,6 +12,7 @@
  *
  /*
  *= require jquery-ui
+ *= require simplemde.min
  *= require_tree .
  *= require_self
  */

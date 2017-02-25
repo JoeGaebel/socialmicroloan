@@ -405,3 +405,13 @@ input[type="number"] {
 .emoji {
   margin-top: -6px;
 }
+
+.panel-body {
+  table {
+    background-color: transparent;
+    th, td {
+      border: 1px solid #ddd;
+      padding: 5px;
+    }
+  }
+}
