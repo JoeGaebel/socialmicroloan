@@ -1,4 +1,4 @@
-<h1>Support "<%= @campaign.title %>"</h1>
+<h1>Support "<%= emojify(@campaign.title) %>"</h1>
 <%= form_for(@support) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <div class="info-row row campaign-show">
