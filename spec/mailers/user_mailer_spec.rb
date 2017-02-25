@@ -13,7 +13,7 @@ describe UserMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('Account activation')
       expect(mail.to).to eq(["#{user.email}"])
-      expect(mail.from).to eq(['noreply@example.com'])
+      expect(mail.from).to eq(['noreply@socialmicro.loan'])
     end
 
     it 'renders the body' do
@@ -33,13 +33,12 @@ describe UserMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('Password reset')
       expect(mail.to).to eq(["#{user.email}"])
-      expect(mail.from).to eq(['noreply@example.com'])
+      expect(mail.from).to eq(['noreply@socialmicro.loan'])
     end
 
     it 'renders the body' do
       expect(mail.body.encoded).to match(user.reset_token)
       expect(mail.body.encoded).to match(CGI.escape(user.email))
-
     end
   end
 end
