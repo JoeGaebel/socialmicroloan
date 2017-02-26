@@ -327,7 +327,7 @@ span.picture {
 }
 
 .campaign-show {
-  img {
+  .campaign-image {
     float: right;
   }
 
@@ -404,6 +404,12 @@ input[type="number"] {
 
 .emoji {
   margin-top: -6px;
+}
+
+.expired {
+  .emoji {
+    margin-top: -3px;
+  }
 }
 
 .panel-body {

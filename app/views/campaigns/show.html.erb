@@ -9,7 +9,7 @@
 
 <div class="info-row row campaign-show">
   <div class="col-md-5 col-md-offset-1">
-    <%= image_tag @campaign.picture.url %>
+    <%= image_tag @campaign.picture.url, class: 'campaign-image' %>
   </div>
 
   <div class="col-md-5 beside-photo campaign-info">
@@ -35,9 +35,9 @@
             </div>
           </div>
         <% elsif @campaign.expired? %>
-          <div class="panel panel-danger">
+          <div class="panel panel-danger expired">
             <div class="panel-body">
-              This Campaign has expired :(
+              <span>This Campaign has expired <%= emojify(":cry:") %></span>
             </div>
           </div>
         <% else %>
