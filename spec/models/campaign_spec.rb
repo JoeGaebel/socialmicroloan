@@ -170,4 +170,14 @@ describe Campaign do
       expect(@campaign.pledged_amount).to eq(support_amount1 + support_amount2)
     end
   end
+
+  describe '#percent_complete' do
+    it 'returns the correct percent' do
+      expect(@campaign.percent_complete).to eq(0)
+      create(:campaign_support, { campaign: @campaign, support_amount: (@campaign.goal_amount / 2) })
+      expect(@campaign.percent_complete).to eq(50)
+      create(:campaign_support, { campaign: @campaign, support_amount: (@campaign.goal_amount / 3) })
+      expect(@campaign.percent_complete).to eq(83)
+    end
+  end
 end

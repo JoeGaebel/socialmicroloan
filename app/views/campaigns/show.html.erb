@@ -12,24 +12,30 @@
     <%= image_tag @campaign.picture.url %>
   </div>
 
-  <div class="col-md-5 beside-photo">
+  <div class="col-md-5 beside-photo campaign-info">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Campaign Info</h3>
       </div>
       <div class="panel-body">
         <h3 class="first"><%= pluralize(@campaign.supporters.count, 'Supporter') %></h3>
-        <h3>$<%= @campaign.pledged_amount || 0 %> Raised</h3>
-        <h3>$<%= @campaign.goal_amount %> Goal</h3>
-        <h3>$<%= @campaign.amount_left %> To Go!</h3>
-        <h3><%= @campaign.days_left %> Days Left To Raise Funds </h3>
-
+        <div class="progress">
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @campaign.percent_complete %>%">
+            <span class="sr-only"><%= @campaign.percent_complete %>% Complete (success)</span>
+          </div>
+        </div>
+        <div class="goal-scale">
+          <p class="pledged-amount">$<%= @campaign.pledged_amount || 0 %> Raised</p>
+          <p class="goal-amount">$<%= @campaign.goal_amount %> Goal</p>
+        </div>
         <% if @campaign.is_funded? %>
           <div class="panel panel-success">
             <div class="panel-body">
               This Campaign was successfully funded!
             </div>
           </div>
+        <% else %>
+          <h3><%= @campaign.days_left %> Days Left To Raise Funds </h3>
         <% end %>
         <% if current_user && current_user.supported_campaigns.include?(@campaign) %>
           <div class="panel panel-success">

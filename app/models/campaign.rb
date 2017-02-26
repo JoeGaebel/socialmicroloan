@@ -54,6 +54,10 @@ class Campaign < ApplicationRecord
     goal_amount == pledged_amount
   end
 
+  def percent_complete
+    (pledged_amount.fdiv(goal_amount) * 100).round
+  end
+
   private
 
   def goal_date_in_future
