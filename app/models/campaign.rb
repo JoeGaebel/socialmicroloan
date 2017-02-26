@@ -2,7 +2,7 @@ class Campaign < ApplicationRecord
   MAX_LOAN_AMOUNT = 10000
   MINIMUM_DAYS_AHEAD = 3
   VALID_REPAYMENT_LENGTHS = [2, 3, 6, 12]
-  VALID_INTEREST_RANGE = 0..50
+  VALID_INTEREST_RANGE = 0..30
   DATE_FORMAT = '%Y-%m-%d'
   default_scope -> { order(created_at: :desc) }
 
