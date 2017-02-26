@@ -61,7 +61,7 @@
             </div>
           </div>
         <% elsif !@campaign.is_funded? %>
-          <%= link_to "LEND", new_campaign_support_path(campaign_id: @campaign.id), class: 'btn btn-success lend' %>
+          <%= link_to "Support " + @campaign.title, new_campaign_support_path(campaign_id: @campaign.id), class: 'btn btn-success lend' %>
         <% end %>
       </div>
     </div>
@@ -78,5 +78,8 @@
         <%= markdown(@campaign.description) %>
       </div>
     </div>
+    <% if !current_user || can_be_supported?(@campaign) %>
+      <%= link_to "Support " + @campaign.title, new_campaign_support_path(campaign_id: @campaign.id), class: 'btn btn-success lend outside' %>
+    <% end %>
   </div>
 </div>

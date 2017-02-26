@@ -41,10 +41,14 @@
 }
 
 .lend {
-  width: 8em;
   height: 2.6em;
   margin: 1em;
-  margin-left: 36%;
+  width: 100%;
+  margin-left: 0px;
+
+  &.outside {
+    margin-top: -5px;
+  }
 }
 
 #show_title {
