@@ -61,6 +61,7 @@ aside {
 /* universal */
 
 body {
+  font-family: 'Nunito', sans-serif;
   padding-top: 60px;
 }
 
@@ -83,6 +84,7 @@ textarea {
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
   line-height: 1;
 }
 
@@ -112,16 +114,15 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
+  font-size: 1.8em;
+  color: black;
   text-transform: uppercase;
-  letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 #logo:hover {
-  color: #fff;
   text-decoration: none;
 }
 
@@ -341,13 +342,13 @@ span.picture {
 }
 
 .navbar-inverse {
-  background-color: #c44e4e;
+  background-color: white;
   border-width: 0;
   .navbar-nav > li > a {
-    color: white;
-  }
-  #logo {
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: #adb0b1;
+    &:hover {
+      color: #FF6E62;
+    }
   }
 }
 
