@@ -20,7 +20,7 @@
       <div class="panel-body">
         <h3 class="first"><%= pluralize(@campaign.supporters.count, 'Supporter') %></h3>
         <div class="progress">
-          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @campaign.percent_complete %>%">
+          <div class="progress-bar progress-bar-success<%= ' progress-bar-striped active' unless @campaign.is_funded? %>" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @campaign.percent_complete %>%">
             <span class="sr-only"><%= @campaign.percent_complete %>% Complete (success)</span>
           </div>
         </div>
