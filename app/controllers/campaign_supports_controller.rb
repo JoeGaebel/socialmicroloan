@@ -47,7 +47,9 @@ class CampaignSupportsController < ApplicationController
   end
 
   def ensure_campaign_not_expired
-    flash[:danger] = 'This campaign has expired!'
-    redirect_to campaign_path(@campaign.id) if @campaign.expired?
+    if @campaign.expired?
+      flash[:danger] = 'This campaign has expired!'
+      redirect_to campaign_path(@campaign.id)
+    end
   end
 end
