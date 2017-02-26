@@ -15,7 +15,7 @@
     </div>
     <div class="user">
       <% if campaign.id == 0 %>
-          By <%= campaign.creator.name %>
+          By <%= link_to campaign.creator.name, signup_path %>
       <% else %>
         By <%= link_to campaign.creator.name, campaign.creator %>
       <% end %>
