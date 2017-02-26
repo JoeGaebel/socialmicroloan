@@ -35,7 +35,18 @@
             </div>
           </div>
         <% else %>
-          <h3><%= @campaign.days_left %> Days Left To Raise Funds </h3>
+          <h4>
+            <span class="glyphicon glyphicon-usd"></span>
+            <%= @campaign.interest_percent %>% interest offered
+          </h4>
+          <h4>
+            <span class="glyphicon glyphicon-calendar"></span>
+            <%= @campaign.repayment_length %> months payback
+          </h4>
+          <h4>
+            <span class="glyphicon glyphicon-time"></span>
+            <%= @campaign.days_left %> days left to raise funds
+          </h4>
         <% end %>
         <% if current_user && current_user.supported_campaigns.include?(@campaign) %>
           <div class="panel panel-success">

@@ -1,4 +1,4 @@
-<h1 id="support-title">Support "<%= emojify(@campaign.title) %>"</h1>
+<h1 id="support-title">Support <%= emojify(@campaign.title) %></h1>
 <%= form_for(@support) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <div class="info-row row campaign-show">
@@ -31,7 +31,7 @@
 
         <div class="with-interest support-field">
           <div class="title">
-            Interest received based on <%= @campaign.interest_percent %>% from Campaign
+            Interest received based on <%= @campaign.interest_percent %>% offered
           </div>
           <div>
             $<span class="revenue-amount">0.00</span>

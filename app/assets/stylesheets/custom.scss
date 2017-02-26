@@ -416,6 +416,10 @@ input[type="number"] {
   }
 }
 
+.info-row.row.campaign-show {
+  margin-bottom: 30px;
+}
+
 .campaign-info {
   .pledged-amount {
     float: left;
@@ -431,5 +435,14 @@ input[type="number"] {
 
   .goal-scale {
     margin-bottom: 40px;
+  }
+
+  .glyphicon {
+    top: 2.9px;
+    margin-right: 4px;
+
+    &.glyphicon-usd  {
+      left: -1.5px;
+    }
   }
 }
