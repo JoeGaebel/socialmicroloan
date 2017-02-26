@@ -467,6 +467,7 @@ DEPENDENCIES
   rails (= 5.0.0.1)
   rails-controller-testing (= 0.1.1)
   rails_12factor
+  rails_serve_static_assets
   redcarpet (~> 3.3, >= 3.3.4)
   rest-client (~> 2.0)
   rspec-rails (~> 3.5)

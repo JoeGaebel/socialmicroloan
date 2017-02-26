@@ -29,7 +29,8 @@ gem 'redcarpet', '~> 3.3', '>= 3.3.4'
 gem 'gemoji'
 gem 'md_emoji'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
+gem 'rails_serve_static_assets', group: [:production]
 
 gem 'pg', group: :production
 
