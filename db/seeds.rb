@@ -40,6 +40,18 @@ boat_life = Campaign.create({
 
 puts "created Boat Life!"
 
+australia = Campaign.create({
+  creator: joe,
+  title: 'Australia 2017',
+  subtitle: "I'm goin' to Australia",
+  description: "I'm goin to Australia!",
+  goal_date: 2.weeks.from_now,
+  repayment_length: 3,
+  interest_percent: 5,
+  goal_amount: 3000,
+  picture:  File.open("#{Rails.root}/spec/fixtures/australia.jpg")
+})
+
 expired = Campaign.create({
   creator: eddie,
   title: 'Supermoto :motorcycle:',

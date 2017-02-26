@@ -18,7 +18,7 @@ describe 'User Profile' do
       assert_match @user.campaigns.count.to_s, response.body
       assert_select 'div.pagination', 1
       @user.campaigns.paginate(page: 1).each do |campaign|
-        assert_select "li#campaign-#{campaign.id}"
+        assert_select "div#campaign-#{campaign.id}"
       end
     end
   end

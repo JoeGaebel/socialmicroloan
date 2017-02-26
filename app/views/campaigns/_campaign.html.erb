@@ -1,26 +1,19 @@
-<li id="campaign-<%= campaign.id %>">
-  <div class="left-pane">
-    <%= link_to image_tag(campaign.picture.url), campaign %>
+<div id="campaign-<%= campaign.id %>" class="campaign-item-view">
+  <div class="display-image">
+    <%= link_to image_tag(campaign.picture.url, class: 'image-tag'), campaign %>
   </div>
-  <div class="right-pane">
+  <div class="info">
     <h4 class="title">
       <%= emojify(campaign.title) %>
     </h4>
-
-    <div class="subtitle">
-      <%= emojify(campaign.subtitle) %>
-    </div>
-
     <span class="user">
       <%= link_to campaign.creator.name, campaign.creator %>
     </span>
-
-    <span class="timestamp">
-    Posted <%= time_ago_in_words(campaign.created_at) %> ago.
-      <% if current_user?(campaign.creator) %>
-      <%= link_to 'delete', campaign, method: :delete,
-          data: { confirm: 'You sure?' } %>
+    <div class="subtitle">
+      <%= emojify(campaign.subtitle) %>
+    </div>
+    <% if current_user?(campaign.creator) %>
+      <%= link_to 'delete', campaign, method: :delete, data: { confirm: 'You sure?' } %>
     <% end %>
-  </span>
   </div>
-</li>
+</div>

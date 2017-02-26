@@ -76,3 +76,23 @@
 #show_title-header {
   text-align: center;
 }
+
+.campaign-item-view {
+  width: 360px;
+  border-radius: 12px;
+  box-shadow: 0 9px 14px -1px #888888;
+  height: 422px;
+  display: inline-block;
+  margin: 13px;
+  overflow: auto;
+
+  .info {
+    padding: 15px;
+  }
+
+  .image-tag {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 300px;
+  }
+}
