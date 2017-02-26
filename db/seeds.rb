@@ -30,7 +30,7 @@ boat_life = Campaign.create({
   creator: joe,
   title: 'Boat Life 2016',
   subtitle: "Rent in SF is crazy. I'm gonna live in a boat.",
-  description: "Rent is $2k per month. Boats? Boats are cheap. I need money to buy a boat, and live on it. I've got a good job I'll pay the loan back in no time.",
+  description: File.read("#{Rails.root}/spec/fixtures/boatlife2016.txt"),
   goal_date: 2.weeks.from_now,
   repayment_length: 3,
   interest_percent: 5,
