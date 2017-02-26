@@ -4,6 +4,7 @@ class CampaignSupportsController < ApplicationController
   before_action :ensure_not_already_supported
   before_action :ensure_user_is_connected
   before_action :ensure_user_not_creator
+  before_action :ensure_campaign_not_expired
 
   def new
     @page_title = 'Support'
@@ -43,5 +44,10 @@ class CampaignSupportsController < ApplicationController
 
   def ensure_user_not_creator
     redirect_to campaign_path(@campaign.id) if current_user?(@campaign.creator)
+  end
+
+  def ensure_campaign_not_expired
+    flash[:danger] = 'This campaign has expired!'
+    redirect_to campaign_path(@campaign.id) if @campaign.expired?
   end
 end

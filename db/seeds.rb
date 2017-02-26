@@ -40,6 +40,20 @@ boat_life = Campaign.create({
 
 puts "created Boat Life!"
 
+expired = Campaign.create({
+  creator: eddie,
+  title: 'Supermoto :motorcycle:',
+  subtitle: "I'm gonna buy a sweet motorcycle",
+  description: "I can't wait to get on the track with this bad boy",
+  goal_date: 2.weeks.from_now,
+  repayment_length: 3,
+  interest_percent: 5,
+  goal_amount: 5000,
+  picture:  File.open("#{Rails.root}/spec/fixtures/supermoto.jpg")
+})
+
+expired.update_column(:goal_date, 2.weeks.ago)
+
 USERS_COUNT.times do |n|
   User.create!({
     name: Faker::Name.name,

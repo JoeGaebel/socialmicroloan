@@ -8,6 +8,7 @@ class CampaignSupport < ApplicationRecord
   validates :user_id, presence: true
   validate :supporter_is_not_creator
   validate :amount_less_than_equal_to_amount_left
+  validate :campaign_not_expired
 
   private
 
@@ -23,5 +24,10 @@ class CampaignSupport < ApplicationRecord
     if support_amount > campaign.amount_left
       errors.add(:support_amount, "can't be greater than goal amount")
     end
+  end
+
+  def campaign_not_expired
+    return unless campaign
+    errors.add(:campaign_id, "campaign is expired!") if campaign.expired?
   end
 end

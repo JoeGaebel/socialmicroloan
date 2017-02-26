@@ -180,4 +180,78 @@ describe Campaign do
       expect(@campaign.percent_complete).to eq(83)
     end
   end
+
+  describe '#expired?' do
+    context 'when the campaign is funded' do
+      before do
+        allow(@campaign).to receive(:is_funded?).and_return(true)
+      end
+
+      context 'when the day has passed' do
+        before do
+          @campaign.update_attribute(:goal_date, 1.day.ago)
+        end
+
+        it 'returns true' do
+          expect(@campaign.expired?).to be_falsey
+        end
+      end
+
+      context 'when the day is today' do
+        before do
+          @campaign.update_attribute(:goal_date, Date.today)
+        end
+
+        it 'returns false' do
+          expect(@campaign.expired?).to be_falsey
+        end
+      end
+
+      context 'when the day is in the future' do
+        before do
+          @campaign.update_attribute(:goal_date, 2.days.from_now)
+        end
+
+        it 'returns false' do
+          expect(@campaign.expired?).to be_falsey
+        end
+      end
+    end
+
+    context 'when the campaign is not funded' do
+      before do
+        allow(@campaign).to receive(:is_funded?).and_return(false)
+      end
+
+      context 'when the day has passed' do
+        before do
+          @campaign.update_attribute(:goal_date, 1.day.ago)
+        end
+
+        it 'returns true' do
+          expect(@campaign.expired?).to be_truthy
+        end
+      end
+
+      context 'when the day is today' do
+        before do
+          @campaign.update_attribute(:goal_date, Date.today)
+        end
+
+        it 'returns false' do
+          expect(@campaign.expired?).to be_falsey
+        end
+      end
+
+      context 'when the day is in the future' do
+        before do
+          @campaign.update_attribute(:goal_date, 2.days.from_now)
+        end
+
+        it 'returns false' do
+          expect(@campaign.expired?).to be_falsey
+        end
+      end
+    end
+  end
 end

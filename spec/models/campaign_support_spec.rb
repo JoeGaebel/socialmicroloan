@@ -61,4 +61,17 @@ describe CampaignSupport do
 
     expect(support).to be_valid
   end
+
+  it 'should prevent support for expired campaigns' do
+    @campaign.update_attribute(:goal_date, 2.days.ago)
+    support = build(:campaign_support, {
+      user_id: @user.id,
+      campaign_id: @campaign.id,
+      support_amount: 100
+    })
+    expect(support).not_to be_valid
+
+    @campaign.update_attribute(:goal_date, 2.days.from_now)
+    expect(support).not_to be_valid
+  end
 end

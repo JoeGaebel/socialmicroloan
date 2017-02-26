@@ -58,6 +58,10 @@ class Campaign < ApplicationRecord
     (pledged_amount.fdiv(goal_amount) * 100).round
   end
 
+  def expired?
+    !is_funded? && Date.today.mjd > goal_date.mjd
+  end
+
   private
 
   def goal_date_in_future

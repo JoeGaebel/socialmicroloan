@@ -34,6 +34,12 @@
               This Campaign was successfully funded!
             </div>
           </div>
+        <% elsif @campaign.expired? %>
+          <div class="panel panel-danger">
+            <div class="panel-body">
+              This Campaign has expired :(
+            </div>
+          </div>
         <% else %>
           <h4>
             <span class="glyphicon glyphicon-usd"></span>
@@ -60,7 +66,7 @@
               You're the owner of this campaign
             </div>
           </div>
-        <% elsif !@campaign.is_funded? %>
+        <% elsif !@campaign.is_funded? && !@campaign.expired? %>
           <%= link_to "Support " + @campaign.title, new_campaign_support_path(campaign_id: @campaign.id), class: 'btn btn-success lend' %>
         <% end %>
       </div>
