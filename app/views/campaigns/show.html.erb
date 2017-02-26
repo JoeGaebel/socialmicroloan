@@ -84,7 +84,7 @@
         <%= markdown(@campaign.description) %>
       </div>
     </div>
-    <% if can_be_supported?(@campaign) %>
+    <% if !@campaign.expired? || current_user && can_be_supported?(@campaign) %>
       <%= link_to "Support " + emojify(@campaign.title), new_campaign_support_path(campaign_id: @campaign.id), class: 'btn btn-success lend outside' %>
     <% end %>
   </div>
