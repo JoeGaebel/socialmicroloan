@@ -80,11 +80,15 @@
 .campaign-item-view {
   width: 360px;
   border-radius: 5px;
-  box-shadow: 0 0 5px 0 #888888;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.16);
   height: 422px;
   display: inline-block;
   margin: 13px;
   overflow: auto;
+
+  .title {
+    margin-bottom: 3px;
+  }
 
   .info {
     padding: 15px;
