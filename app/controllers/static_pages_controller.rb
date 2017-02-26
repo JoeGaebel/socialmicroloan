@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @popular_campaigns = Campaign.first(3)
+    @display_campaign = Campaign.find(0)
+    @popular_campaigns = Campaign.where("id != ?", 0).limit(3)
   end
 
   def help

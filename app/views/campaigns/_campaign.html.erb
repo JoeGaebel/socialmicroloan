@@ -1,16 +1,24 @@
 <div id="campaign-<%= campaign.id %>" class="campaign-item-view">
   <div class="display-image">
-    <%= link_to image_tag(campaign.picture.url, class: 'image-tag'), campaign %>
+    <% if campaign.id == 0 %>
+      <%= image_tag(campaign.picture.url, class: 'image-tag') %>
+    <% else %>
+      <%= link_to image_tag(campaign.picture.url, class: 'image-tag'), campaign %>
+    <% end %>
   </div>
   <div class="info">
     <h4 class="title">
       <%= emojify(campaign.title) %>
     </h4>
-    <span class="user">
-      <%= link_to campaign.creator.name, campaign.creator %>
-    </span>
     <div class="subtitle">
       <%= emojify(campaign.subtitle) %>
+    </div>
+    <div class="user">
+      <% if campaign.id == 0 %>
+          By <%= campaign.creator.name %>
+      <% else %>
+        By <%= link_to campaign.creator.name, campaign.creator %>
+      <% end %>
     </div>
     <% if current_user?(campaign.creator) %>
       <%= link_to 'delete', campaign, method: :delete, data: { confirm: 'You sure?' } %>

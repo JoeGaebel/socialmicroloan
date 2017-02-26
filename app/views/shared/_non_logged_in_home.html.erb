@@ -1,9 +1,11 @@
-<div class="center jumbotron">
-  <h1>Welcome to Social MicroLoan</h1>
-
-  <h2>
-    We're a community of Dreamers, Do-ers, and Linchpins.<br>
-  </h2>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+<div class="row landing">
+  <div class="col-md-5 col-md-offset-1 title-pane">
+    <h1 class="site-title">Social Micro.Loan</h1>
+    <h2 class="site-subtitle">
+      We're a community of Dreamers, Do-ers, and Linchpins.<br>
+    </h2>
+  </div>
+  <div class="col-md-3  ">
+    <%= render @display_campaign %>
+  </div>
 </div>

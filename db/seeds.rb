@@ -66,15 +66,24 @@ expired = Campaign.create({
 
 expired.update_column(:goal_date, 2.weeks.ago)
 
-USERS_COUNT.times do |n|
-  User.create!({
-    name: Faker::Name.name,
-    email: "example-#{n+1}@example.com",
-    password: 'password',
-    password_confirmation: 'password',
-    activated: true,
-    activated_at: Time.zone.now
-  })
-end
 
-puts "created Users"
+you = User.create({
+  name: 'You',
+  email: 'you@socialmicro.loan',
+  password: 'password',
+  activated: true,
+  activated_at: Time.zone.now
+})
+
+Campaign.create!({
+  id: 0,
+  creator: you,
+  title: "That thing you've always dreamed of",
+  subtitle: "but didn't have the support you needed",
+  description: "this is an example",
+  goal_date: 1.year.from_now,
+  repayment_length: 3,
+  interest_percent: 5,
+  goal_amount: 5000,
+  picture:  File.open("#{Rails.root}/spec/fixtures/skydive1.gif")
+})
