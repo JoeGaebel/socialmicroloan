@@ -28,4 +28,8 @@ module ApplicationHelper
       end
     end.html_safe if content.present?
   end
+
+  def current_controller?(name)
+    controller_name == name
+  end
 end

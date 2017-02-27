@@ -3,7 +3,12 @@
     <%= link_to 'SML', root_path, id: 'logo' %>
     <nav>
       <ul class='nav navbar-nav navbar-right'>
-        <li><%= link_to 'Browse',    root_path %></li>
+        <% if current_controller?('static_pages') %>
+          <li><a class="scrolling-link">Browse</a></li>
+        <% else %>
+          <li><%= link_to 'Browse', root_path %></li>
+        <% end %>
+
         <li><%= link_to 'Create',    new_campaign_path %></li>
         <% if logged_in? %>
           <li class="dropdown">

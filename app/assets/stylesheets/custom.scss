@@ -121,6 +121,7 @@ p {
   font-weight: bold;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
+  margin-left: -3px;
 }
 
 #logo:hover {
@@ -479,4 +480,9 @@ input[type="number"] {
 
 .popular-campaigns > h1 {
   text-align: left;
+  padding-left: 9px;
+}
+
+.scrolling-link {
+  cursor: pointer;
 }

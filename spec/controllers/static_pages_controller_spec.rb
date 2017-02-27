@@ -24,7 +24,7 @@ describe StaticPagesController do
     it 'renders the correct links' do
       get :home
       assert_template 'static_pages/home'
-      assert_select "a[href=?]", root_path, count: 2
+      assert_select "a[href=?]", root_path, count: 1
       assert_select "a[href=?]", new_campaign_path
       assert_select "a[href=?]", login_path
     end
