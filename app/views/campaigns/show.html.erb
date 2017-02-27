@@ -2,7 +2,7 @@
   <h1 id="show_title"><%= emojify(@campaign.title) %></h1>
   <div id="show_subject">
     <h2 id="show_subtitle"><%= emojify(@campaign.subtitle) %></h2>
-    <h2 id="show_name">By <%= @campaign.creator.name %></h2>
+    <h2 id="show_name">By <%= link_to(@campaign.creator.name, @campaign.creator) %></h2>
   </div>
 </div>
 
