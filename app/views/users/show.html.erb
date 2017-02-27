@@ -7,16 +7,16 @@
       </h1>
     </section>
     <div>
-      <% if @user.connected? %>
-        <p>
-          <span class="glyphicon glyphicon-ok"/>
-          Connected with Stripe
-        </p>
-        <% if current_user?(@user) %>
-          <%= link_to 'Deauthorize Stripe Account', stripe_deauthorize_path, class: 'btn btn-danger btn-lg' %>
+      <% if current_user?(@user) %>
+        <% if @user.connected? %>
+            <p>
+              <span class="glyphicon glyphicon-ok"/>
+              Connected with Stripe
+            </p>
+            <%= link_to 'Deauthorize Stripe Account', stripe_deauthorize_path, class: 'btn btn-danger btn-lg' %>
+        <% else %>
+            <%= link_to 'Connect Stripe Account', stripe_oauth_path, class: 'btn btn-lg btn-primary' %>
         <% end %>
-      <% else %>
-        <%= link_to 'Connect Stripe Account', stripe_oauth_path, class: 'btn btn-lg btn-primary' %>
       <% end %>
     </div>
   </aside>
