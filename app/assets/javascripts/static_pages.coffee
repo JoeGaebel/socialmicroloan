@@ -1,5 +1,5 @@
 scrollToBrowse = ->
-  $("body").animate({scrollTop: $(".scroll-to").position().top + -40 }, 300);
+  $("body").animate({scrollTop: $(".scroll-to").position().top + -40 }, 500);
 
 onReady = ->
   $('.scrolling-link').on('click', scrollToBrowse)
