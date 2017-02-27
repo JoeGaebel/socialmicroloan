@@ -455,6 +455,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   listen (~> 3.0.5)
+  loofah (~> 2.0, >= 2.0.3)
   md_emoji
   mini_magick (= 4.5.1)
   mysql2
