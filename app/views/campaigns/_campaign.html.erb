@@ -14,14 +14,15 @@
       <%= emojify(campaign.subtitle) %>
     </div>
     <div class="user">
-      <% if campaign.id == 0 %>
-          By <%= link_to campaign.creator.name, signup_path %>
+      <% if current_user?(campaign.creator) %>
+        <%= link_to 'delete', campaign, method: :delete, data: { confirm: 'You sure?' } %>
       <% else %>
+        <% if campaign.id == 0 %>
+          By <%= link_to campaign.creator.name, signup_path %>
+        <% else %>
         By <%= link_to campaign.creator.name, campaign.creator %>
+        <% end %>
       <% end %>
     </div>
-    <% if current_user?(campaign.creator) %>
-      <%= link_to 'delete', campaign, method: :delete, data: { confirm: 'You sure?' } %>
-    <% end %>
   </div>
 </div>
