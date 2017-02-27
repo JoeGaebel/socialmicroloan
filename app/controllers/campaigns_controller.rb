@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   before_action :ensure_user_logged_in, only: [:new, :create]
   before_action :correct_user,   only: :destroy
-  before_action :ensure_user_is_connected, only: [:new, :create]
+  # before_action :ensure_user_is_connected, only: [:new, :create]
 
   include ApplicationHelper
 
