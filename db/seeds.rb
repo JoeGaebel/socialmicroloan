@@ -16,7 +16,7 @@ joe = User.create!({
 
 puts "created Joe!"
 
-eddie = User.create({
+eddie = User.create!({
   name: 'Eddie A.',
   email: 'eddie@example.com',
   password: 'password',
@@ -26,9 +26,9 @@ eddie = User.create({
 
 puts "created Eddie!"
 
-boat_life = Campaign.create({
+boat_life = Campaign.create!({
   creator: joe,
-  title: 'Boat Life 2016',
+  title: 'Boat Life 2016 :sailboat::sailboat::sailboat:',
   subtitle: "Rent in SF is crazy. I'm gonna live in a boat.",
   description: File.read("#{Rails.root}/spec/fixtures/boatlife2016.txt"),
   goal_date: 2.weeks.from_now,
@@ -40,7 +40,13 @@ boat_life = Campaign.create({
 
 puts "created Boat Life!"
 
-australia = Campaign.create({
+CampaignSupport.create!({
+  user: eddie,
+  campaign: boat_life,
+  support_amount: 3000
+})
+
+australia = Campaign.create!({
   creator: joe,
   title: 'Australia 2017',
   subtitle: "I'm goin' to Australia",
@@ -52,7 +58,7 @@ australia = Campaign.create({
   picture:  File.open("#{Rails.root}/spec/fixtures/australia.jpg")
 })
 
-expired = Campaign.create({
+expired = Campaign.create!({
   creator: eddie,
   title: 'Supermoto :motorcycle:',
   subtitle: "I'm gonna buy a sweet motorcycle",

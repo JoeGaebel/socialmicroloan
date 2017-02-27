@@ -3,6 +3,8 @@ class CampaignsController < ApplicationController
   before_action :correct_user,   only: :destroy
   before_action :ensure_user_is_connected, only: [:new, :create]
 
+  include ApplicationHelper
+
   def create
     @campaign = current_user.campaigns.build(campaign_params)
     if @campaign.save
@@ -21,7 +23,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
-    @page_title = @campaign.title
+    @page_title = remove_emoji(@campaign.title)
   end
 
   def destroy

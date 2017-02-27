@@ -29,6 +29,10 @@ module ApplicationHelper
     end.html_safe if content.present?
   end
 
+  def remove_emoji(content)
+    content.gsub(/:[^:]*:/, '')
+  end
+
   def current_controller?(name)
     controller_name == name
   end
