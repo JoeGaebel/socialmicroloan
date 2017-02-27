@@ -1,6 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$title-color: #5A5B5C;
+$body-color: #696A6B;
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -63,6 +66,7 @@ aside {
 body {
   font-family: 'Nunito', sans-serif;
   padding-top: 60px;
+  color: $body-color;
 }
 
 section {
@@ -84,6 +88,7 @@ textarea {
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
+  color: $title-color;
   font-family: 'Roboto', sans-serif;
   line-height: 1;
 }
@@ -115,7 +120,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.8em;
-  color: black;
+  color: $title-color;
   text-transform: uppercase;
   padding-top: 9px;
   font-weight: bold;
@@ -347,12 +352,24 @@ span.picture {
   background-color: white;
   border-width: 0;
   .navbar-nav > li > a {
-    color: #adb0b1;
     &:hover {
       color: #FF6E62;
     }
   }
 }
+
+.nav .open > a, .nav .open {
+  background-color: white;
+}
+
+.navbar-inverse .navbar-nav > .open > a:focus {
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #FFABA5;
+}
+
 
 * {
   text-rendering: optimizeLegibility;
