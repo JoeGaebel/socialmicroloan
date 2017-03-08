@@ -503,3 +503,10 @@ input[type="number"] {
 .scrolling-link {
   cursor: pointer;
 }
+
+.truncate {
+  width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
