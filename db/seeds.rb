@@ -53,37 +53,37 @@ CampaignSupport.create!({
 })
 
 
-boat_life = Campaign.create!({
-  creator: joe,
-  title: 'Boat Life 2016 :sailboat::sailboat::sailboat:',
-  subtitle: "Rent in SF is crazy. I'm gonna live in a boat.",
-  description: File.read("#{Rails.root}/spec/fixtures/boatlife2016.txt"),
-  goal_date: 2.weeks.from_now,
-  repayment_length: 3,
-  interest_percent: 5,
-  goal_amount: 3000,
-  picture:  File.open("#{Rails.root}/spec/fixtures/boat.jpg")
-})
+# boat_life = Campaign.create!({
+#   creator: joe,
+#   title: 'Boat Life 2016 :sailboat::sailboat::sailboat:',
+#   subtitle: "Rent in SF is crazy. I'm gonna live in a boat.",
+#   description: File.read("#{Rails.root}/spec/fixtures/boatlife2016.txt"),
+#   goal_date: 2.weeks.from_now,
+#   repayment_length: 3,
+#   interest_percent: 5,
+#   goal_amount: 3000,
+#   picture:  File.open("#{Rails.root}/spec/fixtures/boat.jpg")
+# })
 
-puts "created Boat Life!"
+# puts "created Boat Life!"
+#
+# CampaignSupport.create!({
+#   user: eddie,
+#   campaign: boat_life,
+#   support_amount: 3000
+# })
 
-CampaignSupport.create!({
-  user: eddie,
-  campaign: boat_life,
-  support_amount: 3000
-})
-
-australia = Campaign.create!({
-  creator: joe,
-  title: 'Australia 2017',
-  subtitle: "I'm goin' to Australia",
-  description: "I'm goin to Australia!",
-  goal_date: 2.weeks.from_now,
-  repayment_length: 3,
-  interest_percent: 5,
-  goal_amount: 3000,
-  picture:  File.open("#{Rails.root}/spec/fixtures/australia.jpg")
-})
+# australia = Campaign.create!({
+#   creator: joe,
+#   title: 'Australia 2017',
+#   subtitle: "I'm goin' to Australia",
+#   description: "I'm goin to Australia!",
+#   goal_date: 2.weeks.from_now,
+#   repayment_length: 3,
+#   interest_percent: 5,
+#   goal_amount: 3000,
+#   picture:  File.open("#{Rails.root}/spec/fixtures/australia.jpg")
+# })
 
 expired = Campaign.create!({
   creator: eddie,
