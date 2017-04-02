@@ -67,11 +67,11 @@ boat_life = Campaign.create!({
 
 puts "created Boat Life!"
 
-CampaignSupport.create!({
-  user: eddie,
-  campaign: boat_life,
-  support_amount: 3000
-})
+# CampaignSupport.create!({
+#   user: eddie,
+#   campaign: boat_life,
+#   support_amount: 3000
+# })
 
 australia = Campaign.create!({
   creator: joe,
